@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 0037bf95805335045bf7bc8fdab046bd
+timeCreated: 1550625692
+licenseType: Pro
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - txtCamino: {instanceID: 0}
+  - carpetasPrefab: {instanceID: 0}
+  - ficherosPrefab: {instanceID: 0}
+  - ficherosPrefabMP3: {instanceID: 0}
+  - ficherosPrefabMP4: {instanceID: 0}
+  - ficherosPrefabFOT: {instanceID: 0}
+  - scrollRect: {instanceID: 0}
+  - contentPanel: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
