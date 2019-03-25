@@ -6,6 +6,8 @@ using UnityEngine.UI;
 using System.IO;
 using System.Runtime.InteropServices;
 using UnityEngine.SceneManagement;
+using PS4_Tools;
+using System;
 
 public class Controlador : MonoBehaviour {
 
@@ -29,7 +31,7 @@ public class Controlador : MonoBehaviour {
     public GameObject PanelOpciones;
     public GameObject PanelOpcionesAvanzadas;
     public GameObject PanelImagen;
-    public Image PanelImagenImagen;
+    public UnityEngine.UI.Image PanelImagenImagen;
     public GameObject PanelEditorTexto;
     public AudioSource miAudioSource;
     public GameObject PanelCopiando;
@@ -47,6 +49,7 @@ public class Controlador : MonoBehaviour {
     public GameObject ficherosPrefabMP4;
     public GameObject ficherosPrefabFOT;
     public GameObject ficherosPrefabTXT;
+	public GameObject ficherosPrefabSFO;
     public ScrollRect scrollRect;
     public RectTransform contentPanel;
 
@@ -71,7 +74,7 @@ public class Controlador : MonoBehaviour {
     private List<string> ObjetosCaminos = new List<string>();
 
     public GameObject PanelVideo;
-    public Image VideoImagen;
+    public UnityEngine.UI.Image VideoImagen;
     public bool EnVideo = false;
 
     // cadenas para la traduccion...
@@ -171,6 +174,113 @@ public class Controlador : MonoBehaviour {
         catch { ;}
 
         CrearDirectorio();
+		
+		#region << PS4 Tools >>
+
+	
+
+		//Testing PS4 Tools here I will ask Lappy to test it for me in full for now just testing on windows
+		#region << PKG Handeling >>
+		try
+		{		//Liborbis testing
+		var temp = PS4_Tools.PKG.SceneRelated.ReadPKG("C:\\Users\\3deEchelon\\Desktop\\PS4\\Euro.FISHING.COLLECTORS.EDITION.PS4-DUPLEX\\Euro.Fishing.Collectors.Edition.PS4-DUPLEX\\duplex-euro.fishing.collectors.ed.ps4\\Euro.Fishing.Collectors.Edition.PS4-DUPLEX.pkg");
+		}
+		catch(Exception ex)
+		{
+			//some load error 
+		}
+		try
+		{	
+		//Normal testing just to read some info from the pkg
+		var pkg = PS4_Tools.PKG.SceneRelated.Read_PKG("C:\\Users\\3deEchelon\\Desktop\\PS4\\Euro.FISHING.COLLECTORS.EDITION.PS4-DUPLEX\\Euro.Fishing.Collectors.Edition.PS4-DUPLEX\\duplex-euro.fishing.collectors.ed.ps4\\Euro.Fishing.Collectors.Edition.PS4-DUPLEX.pkg");
+		}
+		catch(Exception ex)
+		{
+			//some load error 
+		}
+		#endregion << PKG Handeling >>
+
+		#region << GP File Handeling >>
+		try{
+			//PS4 GP4 File Testing
+		PS4_Tools.PKG.SceneRelated.GP4.Psproject project =   PS4_Tools.PKG.SceneRelated.GP4.ReadGP4(@"C:\Users\3deEchelon\Documents\Sony\Crash Bandcioot Twinsanity.gp4");
+		if(project.Fmt != "gp4")
+		{
+			//MessageBox.Show("This is not a valid PS4 Project");
+			//show some sort of messagebox
+			return;
+		}
+
+		//lets read the pkg content info 
+		if(project.Volume.Package.Passcode.Length != 32)
+		{
+			//MessageBox.Show("Passcode Lentgh is not valid");
+		}
+
+		//to save a gp4 
+
+		//PS4_Tools.PKG.SceneRelated.GP4.SaveGP4(@"C:\Users\3deEchelon\Documents\Sony\tempworking.gp4", project);
+		}
+		catch(Exception ex)
+		{
+			//display some load error
+		}
+		#endregion << GP File Handeling >>
+
+		#region << DDS Handeling >>
+
+		//since i was using bitmaps to do all this i will need to change it to byte[] so users can create proper images from these items
+
+		Stream item = PS4_Tools.Image.DDS.GetStreamFromDDS(@"C:\Users\3deEchelon\Desktop\PS4\psp Decrypt\Sc0\icon0.dds");
+		//do with the stream as you wish
+
+		#endregion << DDS Handeling >>
+
+		#region << RCO >>
+
+		//PS4_Tools.RCO.DumpRco(@"C:\Users\3deEchelon\Desktop\PS4\RCO\Sce.Cdlg.GameCustomData.rco");
+		var file = PS4_Tools.RCO.ReadRco(@"C:\Users\3deEchelon\Desktop\PS4\RCO\Sce.Cdlg.GameCustomData.rco");
+		//testing time 
+		//write a file to server or whatever
+		//we can dump them all if we want 2
+
+		//example how to write all files out you can also display them as you wish using this
+		//var image = file.FileTable.PNGFiles[0].FileBytes;
+		//System.IO.File.WriteAllBytes(@"C: \Users\3deEchelon\Desktop\PS4\RCO\img0.png", image);
+
+		#endregion << RCO >>
+
+		#region << Save Data >>
+
+
+		//PS4_Tools.SaveData.LoadSaveData(@"C:\Users\3deEchelon\Desktop\PS4\RE\Ps4 Save Data Backup\10000000\savedata\CUSA01656\sdimg_SAVEDATA00", @"C:\Users\3deEchelon\Desktop\PS4\RE\Ps4 Save Data Backup\10000000\savedata\CUSA01656\SAVEDATA00.bin");
+
+
+		#endregion << Save Data >>
+
+		#region << RIF >>
+
+		// PS4_Tools.PKG.Official.RIF rifitem = PS4_Tools.PKG.Official.ReadRif(@"C:\Users\3deEchelon\Downloads\RifTest.rif");
+		PS4_Tools.PKG.Official.RIF rifitem = PS4_Tools.PKG.Official.ReadRif(@"C:\Users\3deEchelon\Desktop\PS4\LM\Sc0\license.dat");
+		/*Rif Loaded*/
+		// string Content_ID = System.Text.Encoding.ASCII.GetString(rifitem.Content_ID);
+
+
+		#endregion << RIF >>
+
+		#region << Updates and DLC checking >>
+		try{
+			var updateitem =PS4_Tools.PKG.Official.CheckForUpdate("CUSA07708");
+		 	var storeitems = PS4_Tools.PKG.Official.Get_All_Store_Items("CUSA07708");
+		}
+		catch(Exception ex)
+		{
+
+		}
+
+		#endregion << Updates and DLC Checking >>
+
+		#endregion << PS4 Tools >>
     }
 
     void CrearDirectorio()
@@ -221,6 +331,9 @@ public class Controlador : MonoBehaviour {
             switch (Path.GetExtension(FicherosCreados[i]).ToLower())
             {
                 case ".ogg":
+				case ".sfo":
+					objeto = Instantiate (ficherosPrefabSFO, transform);
+					break;
                 case ".wav":
                     objeto = Instantiate(ficherosPrefabMP3, transform);
                     break;
@@ -466,6 +579,12 @@ public class Controlador : MonoBehaviour {
             try
             {
                 LOG = "";
+				
+				#region << Check what file type for the ps4 this is >>
+
+				var ps4filetype = PS4_Tools.Tools.Get_PS4_File_Type(camino);
+
+				#endregion << Check What file type for the ps4 this is >>
 
                 if (!EnOpciones && !Pegando && !EnEditorTexto && !EnTeclado && !EnImagen)
                 {
@@ -478,6 +597,12 @@ public class Controlador : MonoBehaviour {
                     {
                         switch (Path.GetExtension(camino).ToLower())
                         {
+							case ".pkg":
+								var temp = PS4_Tools.PKG.SceneRelated.Read_PKG(camino);// You can either use this method or the liborbis method
+								break;
+							case ".sfo":
+								var sfo = new Param_SFO.PARAM_SFO(camino);//This will read an sfo and allow you to work with it as you please
+								break;
                             case ".ogg":
                             case ".wav":
                                 PlayAudio();
@@ -806,7 +931,7 @@ public class Controlador : MonoBehaviour {
             FicheroACortar = camino;
 
             OscurecerCortado();
-            ObjetosCreados[Posicion].GetComponent<Image>().color = new Color(255, 255, 255, 0.4f);
+            ObjetosCreados[Posicion].GetComponent<UnityEngine.UI.Image>().color = new Color(255, 255, 255, 0.4f);
             ObjetosCreados[Posicion].GetComponentInChildren<Text>().color = new Color(0, 0, 0, 0.4f);
         }
         else
@@ -815,7 +940,7 @@ public class Controlador : MonoBehaviour {
 
             for (int i = 0; i < ObjetosSelecionados.Count; i++)
             {
-                ObjetosCreados[ObjetosSelecionados[i]].GetComponent<Image>().color = new Color(255, 255, 255, 0.4f);
+                ObjetosCreados[ObjetosSelecionados[i]].GetComponent<UnityEngine.UI.Image>().color = new Color(255, 255, 255, 0.4f);
                 ObjetosCreados[ObjetosSelecionados[i]].GetComponentInChildren<Text>().color = new Color(0, 0, 0, 0.4f);
             }
         }
@@ -829,7 +954,7 @@ public class Controlador : MonoBehaviour {
     {
         for (int i = 0; i < scaneo.Length; i++)
         {
-            ObjetosCreados[i].GetComponent<Image>().color = new Color(255, 255, 255, 1f);
+            ObjetosCreados[i].GetComponent<UnityEngine.UI.Image>().color = new Color(255, 255, 255, 1f);
             ObjetosCreados[i].GetComponentInChildren<Text>().color = new Color(0, 0, 0, 1f);
         }
     }

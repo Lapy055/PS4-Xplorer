@@ -3699,6 +3699,8 @@ MonoBehaviour:
     type: 2}
   ficherosPrefabTXT: {fileID: 1312001608348246, guid: a60feed7851d08b4abad7b52d70d46de,
     type: 2}
+  ficherosPrefabSFO: {fileID: 1312001608348246, guid: 3baed0f164b4b3e4a9d32b7c3e63f8f1,
+    type: 2}
   scrollRect: {fileID: 1916882005}
   contentPanel: {fileID: 509322274}
   camino: /
@@ -3790,7 +3792,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -6951,7 +6953,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1588563690}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
