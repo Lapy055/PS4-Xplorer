@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 321}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -43,7 +43,7 @@ MonoBehaviour:
     y: 0
     width: 1536
     height: 781
-  m_MinSize: {x: 950, y: 321}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -108,10 +108,10 @@ MonoBehaviour:
     y: 30
     width: 1536
     height: 731
-  m_MinSize: {x: 917, y: 271}
-  m_MaxSize: {x: 22012, y: 10021}
+  m_MinSize: {x: 911, y: 250}
+  m_MaxSize: {x: 22006, y: 10000}
   vertical: 0
-  controlID: 3332
+  controlID: 785
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -420,9 +420,9 @@ MonoBehaviour:
     height: 710
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 1c2b0000
-    m_LastClickedID: 11036
-    m_ExpandedIDs: 68c5ffff8efbffff000000005a2c0000c22e0000d62e0000
+    m_SelectedIDs: fa2c0000
+    m_LastClickedID: 11514
+    m_ExpandedIDs: a6fbffff000000001a2b0000942d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -526,9 +526,9 @@ MonoBehaviour:
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 0a280000
-    m_LastClickedID: 10250
-    m_ExpandedIDs: 00000000662700000c28000000ca9a3bffffff7f
+    m_SelectedIDs: 10280000
+    m_LastClickedID: 10256
+    m_ExpandedIDs: 00000000622700001228000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -556,7 +556,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000662700000c28000000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000622700001228000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -637,7 +637,7 @@ MonoBehaviour:
     y: 92
     width: 346
     height: 710
-  m_ScrollPosition: {x: 0, y: 300}
+  m_ScrollPosition: {x: 0, y: 0}
   m_InspectorMode: 0
   m_PreviewResizer:
     m_CachedPref: -160
