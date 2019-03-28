@@ -433,7 +433,7 @@ PlayerSettings:
   ps4BackgroundImagePath: 
   ps4StartupImagePath: Assets/Imagenes/splash.png
   ps4SaveDataImagePath: 
-  ps4SdkOverride: F:/Lapy/Programas/SCE/ORBIS SDKs/4.500
+  ps4SdkOverride: C:/Program Files (x86)/SCE/ORBIS SDKs/4.500
   ps4BGMPath: 
   ps4ShareFilePath: shareparam.json
   ps4ShareOverlayImagePath: 
@@ -449,7 +449,7 @@ PlayerSettings:
   ps4ApplicationParam4: 0
   ps4DownloadDataSize: 0
   ps4GarlicHeapSize: 2048
-  ps4ProGarlicHeapSize: 2560
+  ps4ProGarlicHeapSize: 2873
   ps4Passcode: frAQBc8Wsa1xVPfvJcrgRYwTiizs2trQ
   ps4pnSessions: 1
   ps4pnPresence: 1
@@ -556,11 +556,13 @@ PlayerSettings:
   webGLCompressionFormat: 1
   scriptingDefineSymbols: {}
   platformArchitecture: {}
-  scriptingBackend: {}
+  scriptingBackend:
+    PS4: 0
   incrementalIl2cppBuild: {}
   additionalIl2CppArgs: 
   scriptingRuntimeVersion: 0
-  apiCompatibilityLevelPerPlatform: {}
+  apiCompatibilityLevelPerPlatform:
+    PS4: 2
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   metroPackageName: Windows Explore
